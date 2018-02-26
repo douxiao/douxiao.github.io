@@ -8,7 +8,9 @@ categories: 工作
 ---
 
 　<font size="5" color="lightseagreen">  自己习惯了用ubuntu，特别是在安装了mac主题桌面后有一个非常棒的UI，但是美中不足的是安装一些软件后系统不能像windows下面那样自动创建图标，最近发现了一个特别有用的教程,用来创建Ubuntu图标。</font>
-<a id="more"></a>
+
+<!--more-->
+
 
 举例。给自己的系统创建pycharm的图标
 ```python
