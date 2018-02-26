@@ -6,10 +6,9 @@ tags:
 - UDP 
 categories: 工作
 ---
-        
-
-　<font size="5" color="lightseagreen"> 新年的第一篇博客，新的一年继续加油努力，这这一年里一定要遇到更好的自己，这篇博客是就自己做的一个APP中用到了socket,总结一下TCP和UDP通信。</font>
+  <font size="5" color="lightseagreen"> 新年的第一篇博客，新的一年继续加油努力，这这一年里一定要遇到更好的自己，这篇博客是就自己做的一个APP中用到了socket,总结一下TCP和UDP通信。</font>
 <!--more-->
+
 
 TCP和UDP之间的区别
 

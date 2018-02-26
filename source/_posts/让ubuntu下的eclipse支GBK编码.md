@@ -8,7 +8,7 @@ categories: 工作
 ---
 
 　<font size="5" color="lightseagreen">  今天，把windows下的工程导入到了Linux下eclipse中，由于以前的工程代码，都是GBK编码的，而Ubuntu默认是不支持GBK编码的。所以，首先我们要先让Ubuntu支持GBK，方法如下:</font>
-<a id="more"></a>
+<!--more-->
 
 1、修改/var/lib/locales/supported.d的权限
   `sudo chmod -R 777 /var/lib/locales/supported.d`
