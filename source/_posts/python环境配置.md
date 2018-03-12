@@ -1,6 +1,6 @@
 ---
 title: python环境配置
-date: 2018-12-26 09:00:21
+date: 2017-12-26 09:00:21
 tags:
 - env
 - python
