@@ -15,16 +15,16 @@ categories: 工作
 
 # 一、效果视频
 
-
 <div style="max-width:640px; margin:0 auto 10px;" >
 <div
 style="position: relative;
 width:100%;
 padding-bottom:56.25%;
 height:0;">
-<iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"  src="https://www.youtube.com/embed/_6iY3YNIz60" frameborder="0" allowfullscreen></iframe>
+<iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"  src="http://player.youku.com/embed/XMzQ2NDg1NDIxNg==" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
+
 
 # 二、源码解析
 
@@ -191,7 +191,11 @@ for i in range(0, len(self.candidate)):
                 self.dist.pop()
             # sorted将dict字典中数排序，按key顺序（第二个关键字）
             cd_sorted = sorted(c_d.items(), key=lambda d: d[1])
-            cv2.putText(self.show_3, cd_sorted[0][0], (x2, x1), cv2.FONT_HERSHEY_SIMPLEX, 1.0,
+            if cd_sorted[0][1] > 0.32:
+                cv2.putText(self.show_3, 'Unknown', (x2, x1), cv2.FONT_HERSHEY_SIMPLEX, 1.0,
+                            (0, 255, 255), 2)
+            else:
+                cv2.putText(self.show_3, cd_sorted[0][0], (x2, x1), cv2.FONT_HERSHEY_SIMPLEX, 1.0,
                         (0, 255, 255), 2)
             # 各参数依次是：照片/添加的文字/左上角坐标/字体/字体大小/颜色/字体粗细
             print("\n The person is: ", cd_sorted[0][0])
