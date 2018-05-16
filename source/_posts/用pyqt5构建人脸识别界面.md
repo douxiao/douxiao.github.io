@@ -15,7 +15,7 @@ categories: 工作
 
 # 一、效果视频
 
-<div style="max-width:640px; margin:0 auto 10px;" >
+<div style="max-width:960px; margin:0 auto 10px;" >
 <div
 style="position: relative;
 width:100%;

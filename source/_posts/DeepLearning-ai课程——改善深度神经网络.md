@@ -1,5 +1,5 @@
 ---
-title: DeepLearning.ai课程——改善深度神经网络
+title: 深度学习——改善深度神经网络
 date: 2017-10-13 13:51:29
 tags:
 - DeepLearning
