@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title><![CDATA[YOLO-v3论文阅读笔记]]></title>
+      <title><![CDATA[深度学习——YOLO-v3论文阅读笔记]]></title>
       <url>/2018/05/30/YOLO-v3%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
       <content type="html"></content>
       
@@ -11,15 +11,30 @@
     </entry>
     
     <entry>
-      <title><![CDATA[YOLO-v2论文阅读笔记]]></title>
+      <title><![CDATA[深度学习——YOLO-v2论文阅读笔记]]></title>
       <url>/2018/05/30/YOLO-v2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p><font size="5" color="lightseagreen"> 很久之前就读过YOLO的论文，因为最近YOLO-v3已经发布，有必要系统的做一下总结，这篇博客是总结YOLO-v1，在15年11份发布的版本。<br> </font><br><a id="more"></a></p>
+]]></content>
       
+        <categories>
+            
+            <category> 论文阅读 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> yolo </tag>
+            
+            <tag> object-detection </tag>
+            
+        </tags>
         
     </entry>
     
     <entry>
-      <title><![CDATA[YOLO-v1论文阅读笔记]]></title>
+      <title><![CDATA[深度学习——YOLO-v1论文阅读笔记]]></title>
       <url>/2018/05/30/YOLO-v1%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<p><font size="5" color="lightseagreen"> 很久之前就读过YOLO的论文，因为最近YOLO-v3已经发布，有必要系统的做一下总结，这篇博客是总结YOLO-v1，在15年11份发布的版本。<br> </font><br><a id="more"></a></p>
 <h1 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h1><p>　　YOLO将第一次实现将物体检测作为回归问题求解。基于一个单独的end-to-end网络，完成从原始图像的输入，到<strong>物体位置和类别及相应的置信概率</strong>的输出，在目标检测网络中属于one-stage 方法。</p>
