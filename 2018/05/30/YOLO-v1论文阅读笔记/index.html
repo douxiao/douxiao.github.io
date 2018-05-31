@@ -24,6 +24,7 @@
 <meta property="og:description" content="很久之前就读过YOLO的论文，因为最近YOLO-v3已经发布，有必要系统的做一下总结，这篇博客是总结YOLO-v1，在15年11份发布的版本。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-vs-rcnn.jpg">
+<meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-19.png">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo1_network_arch.png">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-1.png">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-4.png">
@@ -39,7 +40,7 @@
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-14.png">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-15.jpg">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-16.png">
-<meta property="og:updated_time" content="2018-05-30T14:12:03.451Z">
+<meta property="og:updated_time" content="2018-05-31T03:29:05.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习——YOLO-v1论文阅读笔记">
 <meta name="twitter:description" content="很久之前就读过YOLO的论文，因为最近YOLO-v3已经发布，有必要系统的做一下总结，这篇博客是总结YOLO-v1，在15年11份发布的版本。">
@@ -361,12 +362,16 @@
 <p>　　下图是yolo和基于R-CNN系列的目标检测的对比：</p>
 <div align="center"><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-vs-rcnn.jpg" alt=""><br><br>图1<br></div>
 
+<p>　　下图是YOLO和其他网络的性能对比图：</p>
+<div align="center"><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-19.png" alt=""><br></div>
+
+
 <h1 id="二、核心算法"><a href="#二、核心算法" class="headerlink" title="二、核心算法"></a>二、核心算法</h1><h2 id="2-1-网络结构"><a href="#2-1-网络结构" class="headerlink" title="2.1 网络结构"></a>2.1 网络结构</h2><p>　　YOLO网络结构借鉴了GoogLeNet分类网络结构，但未使用Inception module，而是使用的是1X1卷积层（1X1是为了跨通道信息整合，同时可以认为应用了一个全卷积神经网络）同时还使用了3X3卷积层简单替代。</p>
 <p>　　<strong>下图</strong>：卷积层用来提取图像特征，全连接层用来预测图像位置和类别概率值。</p>
-<div align="center"><br><img src="http://ow7va355d.bkt.clouddn.com/yolo1_network_arch.png" alt=""><br>图2<br><img src="http://ow7va355d.bkt.clouddn.com/yolo-1.png" alt=""><br>图3<br></div>
+<div align="center"><br>　<img src="http://ow7va355d.bkt.clouddn.com/yolo1_network_arch.png" alt=""><br>图2<br>　<img src="http://ow7va355d.bkt.clouddn.com/yolo-1.png" alt=""><br>图3<br></div>
 
 <h2 id="2-2网络实现图解"><a href="#2-2网络实现图解" class="headerlink" title="2.2网络实现图解"></a>2.2网络实现图解</h2><p>图解YOLO，如下图所示：</p>
-<div align="center"><br><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-4.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-5.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-6.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-7.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-8.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-9.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-10.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-11.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-12.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-13.png" alt=""><br><br>图4<br></div>
+<div align="center"><br><br>　<img src="http://ow7va355d.bkt.clouddn.com/yolo-4.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-5.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-6.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-7.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-8.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-9.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-10.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-11.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-12.png" alt=""><br><img src="http://ow7va355d.bkt.clouddn.com/yolo-13.png" alt=""><br><br>图4<br></div>
 
 <h2 id="2-3损失函数"><a href="#2-3损失函数" class="headerlink" title="2.3损失函数"></a>2.3损失函数</h2><p>　　YOLO使用均方和误差作为loss函数来优化模型参数，即网络输出的SxSx(Bx5 + C)维向量与真实图像的对应SxSx(Bx5 + C)维向量的均方和误差。如下式所示。其中，coordError、iouError和classError分别代表<strong>预测数据与标定数据之间的坐标误差</strong>、<strong>IOU误差</strong>和<strong>分类误差</strong>。</p>
 <p><img src="http://ow7va355d.bkt.clouddn.com/yolo-14.png" alt=""></p>
@@ -380,7 +385,9 @@
 <p><img src="http://ow7va355d.bkt.clouddn.com/yolo-16.png" alt=""></p>
 <h2 id="2-4-训练"><a href="#2-4-训练" class="headerlink" title="2.4 训练"></a>2.4 训练</h2><p>　　YOLO模型训练分为两步：<br>　　1）预训练。使用ImageNet<br>1000类数据训练YOLO网络的前20个卷积层+1个average池化层+1个全连接层。训练图像分辨率resize到224x224。</p>
 <p>　　2）用步骤1）得到的前20个卷积层网络参数来初始化YOLO模型前20个卷积层的网络参数，然后用VOC 20类标注数据进行YOLO模型训练。为提高图像精度，在训练检测模型时，将输入图像分辨率resize到448x448。</p>
-<h1 id="三、参考文献"><a href="#三、参考文献" class="headerlink" title="三、参考文献"></a>三、参考文献</h1><ol>
+<h1 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h1><p>　　综上，YOLO具有以下的几个优点：<br>　　　1.<strong>速度快</strong>，yolo将物体检测作为回归问题求解，整个网络简单，在titan x GPU上，在保证检测准确率的前提下（63.4% mAP，VOC 2007 test set），可以达到45fps的检测速度。<br>　　　2.<strong>背景误检率低</strong>，YOLO在训练和推理过程中能‘看到’整张图像的整体信息，而基于region proposal的物体检测方法（如rcnn/fast rcnn），在检测过程中，只‘看到’候选框内的局部图像信息。因此，<strong>若当图像背景（非物体）中的部分数据被包含在候选框中送入检测网络进行检测时，容易被误检测成物体。</strong>测试证明，YOLO对于背景图像的误检率低于fast rcnn误检率的一半。</p>
+<p>　　缺点是：<br>　　1. 识别物体位置精准性差。<br>　　2. 召回率低。</p>
+<h1 id="四、参考文献"><a href="#四、参考文献" class="headerlink" title="四、参考文献"></a>四、参考文献</h1><ol>
 <li><a href="https://zhuanlan.zhihu.com/p/25236464" target="_blank" rel="external">YOLO详解</a></li>
 <li><a href="https://docs.google.com/presentation/d/1aeRvtKG21KHdD5lg6Hgyhx5rPq_ZOsGjG5rJ1HP7BbA/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.p" target="_blank" rel="external">YOLO PPT</a></li>
 <li><a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="external">YOLO论文</a></li>
@@ -396,9 +403,9 @@
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2018/05/30/YOLO-v1论文阅读笔记/">深度学习——YOLO-v1论文阅读笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">SunshineDxiao</a></p>
-        <p><span>文章字数:</span>849</p>
+        <p><span>文章字数:</span>1,090</p>
         <p><span>发布时间:</span>2018-05-30, 10:18:04</p>
-        <p><span>最后更新:</span>2018-05-30, 22:12:03</p>
+        <p><span>最后更新:</span>2018-05-31, 11:29:05</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/05/30/YOLO-v1论文阅读笔记/" title="深度学习——YOLO-v1论文阅读笔记">http://www.douxiao.org/2018/05/30/YOLO-v1论文阅读笔记/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.douxiao.org/2018/05/30/YOLO-v1论文阅读笔记/　　作者: SunshineDxiao" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -414,8 +421,8 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/05/30/YOLO-v2论文阅读笔记/">
-                    深度学习——YOLO-v2论文阅读笔记
+                <a href="/2018/05/30/YOLO-v3论文阅读笔记/">
+                    深度学习——YOLO-v3论文阅读笔记
                 </a>
             </div>
         
@@ -434,7 +441,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、背景介绍"><span class="toc-number">1.</span> <span class="toc-text">一、背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、核心算法"><span class="toc-number">2.</span> <span class="toc-text">二、核心算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-网络结构"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 网络结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2网络实现图解"><span class="toc-number">2.2.</span> <span class="toc-text">2.2网络实现图解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3损失函数"><span class="toc-number">2.3.</span> <span class="toc-text">2.3损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-训练"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 训练</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、参考文献"><span class="toc-number">3.</span> <span class="toc-text">三、参考文献</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、背景介绍"><span class="toc-number">1.</span> <span class="toc-text">一、背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、核心算法"><span class="toc-number">2.</span> <span class="toc-text">二、核心算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-网络结构"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 网络结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2网络实现图解"><span class="toc-number">2.2.</span> <span class="toc-text">2.2网络实现图解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3损失函数"><span class="toc-number">2.3.</span> <span class="toc-text">2.3损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-训练"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 训练</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、总结"><span class="toc-number">3.</span> <span class="toc-text">三、总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、参考文献"><span class="toc-number">4.</span> <span class="toc-text">四、参考文献</span></a></li></ol>
         
     </div>
     <style>
@@ -509,7 +516,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/05/30/YOLO-v2论文阅读笔记/" title="上一篇: 深度学习——YOLO-v2论文阅读笔记">
+            <a href="/2018/05/30/YOLO-v3论文阅读笔记/" title="上一篇: 深度学习——YOLO-v3论文阅读笔记">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -523,7 +530,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/30/YOLO-v3论文阅读笔记/">深度学习——YOLO-v3论文阅读笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/30/YOLO-v2论文阅读笔记/">深度学习——YOLO-v2论文阅读笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/30/YOLO-v1论文阅读笔记/">深度学习——YOLO-v1论文阅读笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/14/SSD物体检测论文阅读笔记/">深度学习——SSD论文阅读笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/CNN卷积神经网络解读/">深度学习——CNN卷积神经网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/12/用pyqt5构建人脸识别界面/">用pyqt5构建人脸识别界面</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/TCP和UDP之间的区别/">TCP和UDP之间的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Ubuntu16-04安装多版本Opencv/">Ubuntu16.04安装多版本Opencv</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/python环境配置/">python环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/Ubuntu软件创建图标/">Ubuntu软件创建图标</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/19/tfmodel-Object-Detection-API学习笔记/">tfmodel_Object_Detection_API学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/04/TensorflowPython代码学习笔记/">TensorflowPython代码学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/surface及surfaceview使用总结/">surface及surfaceview使用总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/26/Nvidia-TX1刷机教程/">Nvidia-TX1刷机教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/13/让ubuntu下的eclipse支GBK编码/">让ubuntu下的eclipse支GBK编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/13/DeepLearning-ai课程——改善深度神经网络/">深度学习——改善深度神经网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/深度学习——神经网络和深度学习/">DeepLearning.ai课程——神经网络和深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/26/AKJ-UAV-APP调试问题及解决办法/">AKJ_UAV_APP调试问题及解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/搭建Hexo-github博客-1/">搭建Hexo+github博客(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/搭建Hexo-github博客/">搭建Hexo+github博客(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/深度学习—优化神经网络/">深度学习—优化神经网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/深度学习—构建机器学习工程/">深度学习——构建机器学习工程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/我的博客之路/">我的博客之路</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/天才在左，疯子在右/">天才在左，疯子在右</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Python-Numpy学习/">Python-Numpy学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/深度学习—正则化/">深度学习—正则化</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/31/YOLO-v2论文阅读笔记/">深度学习——YOLO-v2论文阅读笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/30/YOLO-v3论文阅读笔记/">深度学习——YOLO-v3论文阅读笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/30/YOLO-v1论文阅读笔记/">深度学习——YOLO-v1论文阅读笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/14/SSD物体检测论文阅读笔记/">深度学习——SSD论文阅读笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/CNN卷积神经网络解读/">深度学习——CNN卷积神经网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/12/用pyqt5构建人脸识别界面/">用pyqt5构建人脸识别界面</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/TCP和UDP之间的区别/">TCP和UDP之间的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/20/Ubuntu16-04安装多版本Opencv/">Ubuntu16.04安装多版本Opencv</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/python环境配置/">python环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/Ubuntu软件创建图标/">Ubuntu软件创建图标</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/19/tfmodel-Object-Detection-API学习笔记/">tfmodel_Object_Detection_API学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/04/TensorflowPython代码学习笔记/">TensorflowPython代码学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/30/surface及surfaceview使用总结/">surface及surfaceview使用总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/26/Nvidia-TX1刷机教程/">Nvidia-TX1刷机教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/13/让ubuntu下的eclipse支GBK编码/">让ubuntu下的eclipse支GBK编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/13/DeepLearning-ai课程——改善深度神经网络/">深度学习——改善深度神经网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/深度学习——神经网络和深度学习/">DeepLearning.ai课程——神经网络和深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/26/AKJ-UAV-APP调试问题及解决办法/">AKJ_UAV_APP调试问题及解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/搭建Hexo-github博客-1/">搭建Hexo+github博客(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/搭建Hexo-github博客/">搭建Hexo+github博客(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/深度学习—优化神经网络/">深度学习—优化神经网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/深度学习—构建机器学习工程/">深度学习——构建机器学习工程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/我的博客之路/">我的博客之路</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/天才在左，疯子在右/">天才在左，疯子在右</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Python-Numpy学习/">Python-Numpy学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/深度学习—正则化/">深度学习—正则化</a></li></ul>
 
 
 
@@ -561,7 +568,7 @@
                     <span>| </span>
                     <span title="总量不多啊，继续努力！">
 	                    <span><i class="fa fa-bar-chart-o" aria-hidden="true"></i></span>
-                    <span class="post-count"><b>29.9k</b></span>
+                    <span class="post-count"><b>33.7k</b></span>
                     </span>
                 
             </div>
