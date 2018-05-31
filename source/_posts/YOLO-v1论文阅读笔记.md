@@ -1,5 +1,5 @@
 ---
-title: YOLO-v1论文阅读笔记
+title: 深度学习——YOLO-v1论文阅读笔记
 date: 2018-05-30 10:18:04
 tags:
 - yolo
@@ -21,6 +21,13 @@ categories: 论文阅读
 图1
 </div>
 
+　　下图是YOLO和其他网络的性能对比图：
+
+<div align=center>
+![](http://ow7va355d.bkt.clouddn.com/yolo-19.png)
+</div>
+
+
 # 二、核心算法
 
 
@@ -33,9 +40,9 @@ categories: 论文阅读
 　　**下图**：卷积层用来提取图像特征，全连接层用来预测图像位置和类别概率值。
 
 <div align = center>
-![](http://ow7va355d.bkt.clouddn.com/yolo1_network_arch.png)
+　![](http://ow7va355d.bkt.clouddn.com/yolo1_network_arch.png)
 图2
-![](http://ow7va355d.bkt.clouddn.com/yolo-1.png)
+　![](http://ow7va355d.bkt.clouddn.com/yolo-1.png)
 图3
 </div>
 
@@ -46,7 +53,7 @@ categories: 论文阅读
 
 <div align=center>
 
-![](http://ow7va355d.bkt.clouddn.com/yolo-4.png)
+　![](http://ow7va355d.bkt.clouddn.com/yolo-4.png)
 ![](http://ow7va355d.bkt.clouddn.com/yolo-5.png)
 ![](http://ow7va355d.bkt.clouddn.com/yolo-6.png)
 ![](http://ow7va355d.bkt.clouddn.com/yolo-7.png)
@@ -90,9 +97,17 @@ loss计算如下式：
 
 　　2）用步骤1）得到的前20个卷积层网络参数来初始化YOLO模型前20个卷积层的网络参数，然后用VOC 20类标注数据进行YOLO模型训练。为提高图像精度，在训练检测模型时，将输入图像分辨率resize到448x448。
 
+# 三、总结
+　　综上，YOLO具有以下的几个优点：
+　　　1.**速度快**，yolo将物体检测作为回归问题求解，整个网络简单，在titan x GPU上，在保证检测准确率的前提下（63.4% mAP，VOC 2007 test set），可以达到45fps的检测速度。
+　　　2.**背景误检率低**，YOLO在训练和推理过程中能‘看到’整张图像的整体信息，而基于region proposal的物体检测方法（如rcnn/fast rcnn），在检测过程中，只‘看到’候选框内的局部图像信息。因此，**若当图像背景（非物体）中的部分数据被包含在候选框中送入检测网络进行检测时，容易被误检测成物体。**测试证明，YOLO对于背景图像的误检率低于fast rcnn误检率的一半。
 
 
-# 三、参考文献
+　　缺点是：
+　　1. 识别物体位置精准性差。
+　　2. 召回率低。
+
+# 四、参考文献
 
 1. [YOLO详解](https://zhuanlan.zhihu.com/p/25236464)
 2. [YOLO PPT](https://docs.google.com/presentation/d/1aeRvtKG21KHdD5lg6Hgyhx5rPq_ZOsGjG5rJ1HP7BbA/pub?start=false&loop=false&delayms=3000&slide=id.p)
