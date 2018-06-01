@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[深度学习——YOLO-v3论文阅读笔记]]></title>
       <url>/2018/06/01/YOLO-v3%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
-      <content type="html"><![CDATA[<p><font size="5" color="lightseagreen"> yolo作者更新了yolo升级到了yolo-v3版本，这篇博客是总结yolo-v3<br> </font><br><a id="more"></a></p>
+      <content type="html"><![CDATA[<p><font size="5" color="lightseagreen"> yolo作者更新了yolo升级到了yolo-v3版本，这篇博客是总结yolo-v3。<br> </font><br><a id="more"></a></p>
 <h1 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h1><p>　　在做背景介绍前先看一张图，YOLOs-v3与目前最好的实时检测网络的性能对比图。</p>
 <div align="center"><br><img src="http://ow7va355d.bkt.clouddn.com/yolo21.jpeg" alt=""><br></div>
 
