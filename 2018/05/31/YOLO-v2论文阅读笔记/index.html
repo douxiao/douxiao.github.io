@@ -15,23 +15,23 @@
 
 
 
-<meta name="description" content="2016年12月2５，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。">
+<meta name="description" content="2016年12月25，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。">
 <meta name="keywords" content="yolo,object-detection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度学习——YOLO-v2论文阅读笔记">
 <meta property="og:url" content="http://www.douxiao.org/2018/05/31/YOLO-v2论文阅读笔记/index.html">
 <meta property="og:site_name" content="SunshineDxiao&#39;s Blog">
-<meta property="og:description" content="2016年12月2５，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。">
+<meta property="og:description" content="2016年12月25，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-17.png">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-18.png">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-20.jpeg">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-21.jpg">
 <meta property="og:image" content="http://ow7va355d.bkt.clouddn.com/yolo-21.png">
-<meta property="og:updated_time" content="2018-05-31T14:33:40.354Z">
+<meta property="og:updated_time" content="2018-05-31T14:41:32.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习——YOLO-v2论文阅读笔记">
-<meta name="twitter:description" content="2016年12月2５，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。">
+<meta name="twitter:description" content="2016年12月25，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。">
 <meta name="twitter:image" content="http://ow7va355d.bkt.clouddn.com/yolo-17.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -345,7 +345,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><font size="5" color="lightseagreen"> 2016年12月2５，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。<br> </font><br><a id="more"></a></p>
+        <p><font size="5" color="lightseagreen"> 2016年12月25，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。<br> </font><br><a id="more"></a></p>
 <h1 id="一、背景介绍"><a href="#一、背景介绍" class="headerlink" title="一、背景介绍"></a>一、背景介绍</h1><p>　　为了提高物体的<strong>定位精准性和召回率</strong>，YOLO作者改进了神经网络提出了YOLO-v2版本，提高了训练图像的分辨率，引入了faster rcnn中的anchor box的思想，对网络结构即各层的设计进行了改进输出层使用卷积层替代YOLO-V1版本的全连接层，采用wordtree的方法，联合使用coco数据集和imagenet数据集训练模型，使之可以实时识别9000类物体。在<strong>识别精度、速度和定位准确度</strong>等方面有大大的提升。<br>　　该模型有以下几点值得参考</p>
 <p>　　　1. 对模型的一系列分析和改进；<br>　　　2. 采用多尺度训练方法，是模型可以适应不同的输入尺寸；<br>　　　3. 使用wordtree方法值得参考；<br>　　　4. 端对端的识别训练方法。</p>
 <p>　　YOLO9000是可以检测超过9000种类别的实时检测系统。<br>　　首先，作者在YOLO基础上进行了一系列的改进，产生了YOLOv2。YOLOv2在PASCAL VOC和COCO数据集上获得了目前最好的结果（state of the art）。<br>　　然后，采用多尺度训练方法，YOLO-v2可以根据速度和精确度需求调整输入尺寸。67FPS时，YOLOv2在VOC2007数据集上可以达到76.8mAP；40FPS，可以达到78.6mAP，比目前最好的Faster R-CNN和SSD精确度更高，检测速度更快。<br>　　最后提出了目标检测和分类的共训练方法。采用该方法，作者分别在COCO目标检测数据集和ImageNet分类数据集上训练了YOLO9000。联合训练使YOLO9000可以预测没有labelled的目标检测数据。YOLO9000在ImageNet验证集（200类）上获得了19.7mAP。其中，156类没有出现在COCO训练集中，YOLO9000获得了16.0mAP。YOLO9000可以实时识别超过9000类别。　</p>
@@ -387,7 +387,7 @@
         <p><span>文章作者:</span><a href="/" title="回到主页">SunshineDxiao</a></p>
         <p><span>文章字数:</span>3,690</p>
         <p><span>发布时间:</span>2018-05-31, 09:18:15</p>
-        <p><span>最后更新:</span>2018-05-31, 22:33:40</p>
+        <p><span>最后更新:</span>2018-05-31, 22:41:32</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/05/31/YOLO-v2论文阅读笔记/" title="深度学习——YOLO-v2论文阅读笔记">http://www.douxiao.org/2018/05/31/YOLO-v2论文阅读笔记/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.douxiao.org/2018/05/31/YOLO-v2论文阅读笔记/　　作者: SunshineDxiao" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -550,7 +550,7 @@
                     <span>| </span>
                     <span title="总量不多啊，继续努力！">
 	                    <span><i class="fa fa-bar-chart-o" aria-hidden="true"></i></span>
-                    <span class="post-count"><b>33.7k</b></span>
+                    <span class="post-count"><b>35.6k</b></span>
                     </span>
                 
             </div>
