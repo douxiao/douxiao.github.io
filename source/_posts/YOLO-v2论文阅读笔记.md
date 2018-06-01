@@ -6,7 +6,7 @@ tags:
 - object-detection
 categories: 论文阅读
 ---
-<font size="5" color="lightseagreen"> 2016年12月2５，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。
+<font size="5" color="lightseagreen"> 2016年12月25，时隔一年，作者更新了yolo升级到了v2版，这篇博客是总结YOLO-v2。
  </font>
 <!--more-->
 
